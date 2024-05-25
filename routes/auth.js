@@ -12,7 +12,6 @@ const userAuthSchema = require("../schemas/userAuth.json");
 const userRegisterSchema = require("../schemas/userRegister.json");
 const userGoogleSchema = require("../schemas/userGoogle.json");
 const { BadRequestError } = require("../expressError");
-const { json } = require("react-router-dom");
 
 /**
  * POST /auth/token
