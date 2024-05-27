@@ -214,7 +214,7 @@ class User {
   /**
    * Given a user_id, return data about user.
    *
-   * Returns { user_id, username, first_name, last_name, email }
+   * Returns { user_id, first_name, last_name, email }
    *
    * Throws NotFoundError if user not found.
    *
@@ -225,7 +225,6 @@ class User {
   static async get(user_id) {
     const userRes = await db.query(
           `SELECT user_id,
-                  username,
                   first_name AS "firstName",
                   last_name AS "lastName",
                   email
@@ -282,7 +281,7 @@ class User {
 
     const querySql = `UPDATE users 
                       SET ${setCols} 
-                      WHERE username = ${useridVarIdx} 
+                      WHERE user_id = ${useridVarIdx} 
                       RETURNING user_id,
                                 first_name AS "firstName",
                                 last_name AS "lastName",
@@ -309,7 +308,7 @@ class User {
            FROM users
            WHERE user_id = $1
            RETURNING user_id`,
-        [username],
+        [user_id],
     );
     const user = result.rows[0];
 

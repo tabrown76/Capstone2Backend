@@ -42,4 +42,5 @@ CREATE TABLE shopping_list (
   CONSTRAINT fk_user_shopping_list
     FOREIGN KEY(user_id) 
     REFERENCES users(user_id)
+    ON DELETE CASCADE
 );
